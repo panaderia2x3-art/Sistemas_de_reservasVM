@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-BackendvmApplication<backendvm>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.reservasvm.backendvm.BackendvmApplication",
+      "projectName": "backendvm",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
