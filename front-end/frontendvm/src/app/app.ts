@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CompTecnicos } from './Components/comp-tecnicos/comp-tecnicos';
 
 @Component({
-  imports: [RouterOutlet],
   selector: 'app-root',
+  standalone: true,
+  imports: [CompTecnicos],
   styleUrl: './app.scss',
   templateUrl: './app.html',
 })

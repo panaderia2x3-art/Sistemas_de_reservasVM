@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.reservasvm.backendvm.servicios.serviceFechanl;
 import com.reservasvm.backendvm.entidades.fecha_no_laborales;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 @RestController 
 @RequestMapping("/api/fecha_no_laborales") 

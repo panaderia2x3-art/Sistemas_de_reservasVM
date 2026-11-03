@@ -1,6 +1,11 @@
 package com.reservasvm.backendvm.entidades;
-import java.time.LocalDate;
-import java.time.LocalTime;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,7 +29,7 @@ public class actividades {
 
     @Id 
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id_actividades;
 
     @Enumerated (EnumType.STRING)
     @Column (nullable = false)
@@ -33,18 +38,6 @@ public class actividades {
     @Enumerated(EnumType.STRING)
     @Column (nullable = false)
     private EstadoActividad estado;
-
-    @Column (nullable = false)
-    private LocalDate dia_inicio;
-
-    @Column (nullable = false)
-    private LocalDate dia_final;
-
-    @Column (nullable = false)
-    private LocalTime hora_inicio;
-
-    @Column (nullable = false)
-    private LocalTime hora_final;
 
     @Column (nullable = true, length = 500)
     private String notas;
@@ -56,6 +49,10 @@ public class actividades {
     @ManyToOne (optional = false)
     @JoinColumn (name="id_clientes")
     private clientes cliente;
+
+    @OneToMany(mappedBy = "actividad", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JsonManagedReference 
+    private List<dia> dias= new ArrayList<>();
 
 
 }

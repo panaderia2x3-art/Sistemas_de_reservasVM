@@ -1,0 +1,45 @@
+<div style="padding: 20px">
+  <h2>Gestión de Técnicos</h2>
+
+  <!-- Formulario simple para crear -->
+  <form (submit)="registrar(); $event.preventDefault()">
+    <div>
+      <label>Nombre:</label>
+      <input type="text" [(ngModel)]="nuevoTecnico.nombre_tecnico" name="nombre" required />
+    </div>
+    <div>
+      <label>Apellido:</label>
+      <input type="text" [(ngModel)]="nuevoTecnico.apellido_tecnico" name="apellido" required />
+    </div>
+    <div>
+      <label>Teléfono:</label>
+      <input type="text" [(ngModel)]="nuevoTecnico.telefono_tecnico" name="telefono" required />
+    </div>
+    <button type="submit">Guardar Técnico</button>
+  </form>
+
+  <hr />
+
+  <!-- Tabla de listado -->
+  <h3>Lista de Técnicos</h3>
+  <table border="1" cellpadding="8">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Teléfono</th>
+        <th>Activo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of tecnicos">
+        <td>{{ t.id_tecnicos }}</td>
+        <td>{{ t.nombre_tecnico }}</td>
+        <td>{{ t.apellido_tecnico }}</td>
+        <td>{{ t.telefono_tecnico }}</td>
+        <td>{{ t.activo ? 'Sí' : 'No' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
