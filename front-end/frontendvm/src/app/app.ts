@@ -1,10 +1,12 @@
 import { Component, signal } from '@angular/core';
-import { CompTecnicos } from './Components/comp-tecnicos/comp-tecnicos';
+import { Nav } from './Components/nav/nav';
+import { Footer } from './Components/footer/footer';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CompTecnicos],
+  imports: [Nav, Footer, RouterOutlet],
   styleUrl: './app.scss',
   templateUrl: './app.html',
 })
