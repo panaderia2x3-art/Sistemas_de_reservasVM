@@ -1,0 +1,38 @@
+<div style="padding: 20px">
+  <h2>Gestión de Técnicos</h2>
+
+  <!-- Formulario simple para crear -->
+  <form (submit)="RegistrarFechanl(); $event.preventDefault()">
+    <div>
+      <label>Fecha no laborable:</label>
+      <input type="date" [(ngModel)]="nuevofechanl.fecha_nl" name="fecha" required />
+    </div>
+    <div>
+      <label>Motivo:</label>
+      <input type="text" [(ngModel)]="nuevofechanl.motivo" name="motivo" required />
+    </div>
+    <button type="submit">Guardar fecha no laborable</button>
+  </form>
+
+  <hr />
+
+  <!-- Tabla de listado -->
+  <h3>Lista de Fecha no laborables con motivo</h3>
+  <table border="1" cellpadding="8">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Fecha nl</th>
+        <th>Motivo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let fnl of fechanl">
+        <td>{{ fnl.id_fechanl}}</td>
+        <td>{{ fnl.fecha_nl}}</td>
+        <td>{{ fnl.motivo}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

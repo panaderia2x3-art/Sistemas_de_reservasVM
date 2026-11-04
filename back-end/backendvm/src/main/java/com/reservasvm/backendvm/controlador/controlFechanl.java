@@ -15,6 +15,7 @@ import com.reservasvm.backendvm.entidades.fecha_no_laborales;
 
 @RestController 
 @RequestMapping("/api/fecha_no_laborales") 
+@CrossOrigin (origins = "http://localhost:4200")
 public class controlFechanl {
 
     private serviceFechanl servicios;
