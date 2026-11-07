@@ -1,44 +1,65 @@
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+// ==========================================
+// 1. VARIABLES
+// ==========================================
+$color-principal: black;
+$color-hover: red;
+$color-fondo: #ffff;
+
+$border-limitador: 2px solid $color-principal;
+$general-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+$border-normal: 10px;
+
+// ==========================================
+// 2. ESTILOS GLOBALES
+// ==========================================
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.navegador{
-    border: 2px solid black;
-    background-color: #ffff;
-    display: flex;
-    justify-content: space-around;
-    padding: 1rem;
-    align-items: center;
-    border-radius: 10px;
-    box-shadow: 2px 6px 20px rgba($color: #000000, $alpha:0.20 );
-}
+// ==========================================
+// 3. COMPONENTE NAVEGADOR
+// ==========================================
+.navegador {
+  border: $border-limitador;
+  background-color: $color-fondo;
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+  align-items: center;
+  border-radius: $border-normal;
+  box-shadow: $general-shadow;
 
-.nav-lista{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    list-style: none;
-    gap: 1rem;
-    flex-wrap: wrap;
-   
-}
+  .nav-contendor {
+    .nav-lista {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      list-style: none;
+      gap: 1rem;
+      flex-wrap: wrap;
 
-.link{
-    text-decoration: none;
-    color: black;
-   
-}
+      li {
+        list-style: none;
+      }
 
-li{
-    border-bottom: 0 red solid;
-    transition: color 0.3s ease, border-bottom 0.3s ease,transform 0.2s ease  ;
-}
+      .link {
+        text-decoration: none;
+        color: $color-principal;
+        display: inline-block;
+        border-bottom: 1px solid transparent;
+        transition:
+          color 0.3s ease,
+          border-bottom 0.3s ease,
+          transform 0.2s ease;
 
-li:hover{
-    transform: translateY(-3px);
-    color: red;
-    border-bottom: red 1px solid;
+        &:hover {
+          transform: translateY(-3px);
+          color: $color-hover;
+          border-bottom: 1px solid $color-hover;
+        }
+      }
+    }
+  }
 }
-
