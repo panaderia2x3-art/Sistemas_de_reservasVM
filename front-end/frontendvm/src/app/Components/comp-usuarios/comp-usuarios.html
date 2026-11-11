@@ -1,1 +1,33 @@
-<p>comp-usuarios works!</p>
+<div style="padding: 20px">
+  <h2>Gestion de Tecnicos</h2>
+
+  <form (submit)="RegistrarUsuarios(); ($event.preventDefault)">
+    <div>
+      <label>Nombre usuario </label>
+      <input type="text" [(ngModel)]="nuevoUsuario.nombre_user" name="nombre" required />
+    </div>
+    <div>
+      <label>Contraseña Usuario</label>
+      <input type="text" [(ngModel)]="nuevoUsuario.password_hash" name="password_hash" required />
+    </div>
+    <button type="submit">Guardar Usuario</button>
+  </form>
+
+  <hr />
+
+  <h3>Lista Usuarios</h3>
+  <table border="1" cellPadding="8">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of usuarios">
+        <td>{{ u.id }}</td>
+        <td>{{ u.nombreUsuario }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

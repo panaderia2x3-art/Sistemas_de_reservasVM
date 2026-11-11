@@ -1,0 +1,95 @@
+<div style="padding: 20px">
+  <h2>Gestión de Actividades</h2>
+
+  <form (submit)="registrarActividades(); $event.preventDefault()">
+    <div>
+      <label>Tipo:</label>
+      <select name="tipo" id="tipo" [(ngModel)]="nuevaActividad.tipo" required>
+        <option value="MEDIDAS">Medidas</option>
+        <option value="TRABAJO">Trabajo</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Estado:</label>
+      <select name="estado" id="estado" [(ngModel)]="nuevaActividad.estado" required>
+        <option value="PENDIENTE">Pendiente</option>
+        <option value="EN_CURSO">En curso</option>
+        <option value="TERMINADA">Terminada</option>
+        <option value="CANCELADA">Cancelada</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Notas:</label>
+      <input type="text" [(ngModel)]="nuevaActividad.notas" name="notas" required />
+    </div>
+
+    <div>
+      <label>ID Técnico:</label>
+      <input
+        type="number"
+        [(ngModel)]="nuevaActividad.tecnico.id_tecnicos"
+        name="id_tecnicos"
+        required
+      />
+    </div>
+
+    <div>
+      <label>ID Cliente:</label>
+      <input
+        type="number"
+        [(ngModel)]="nuevaActividad.cliente.id_clientes"
+        name="id_clientes"
+        required
+      />
+    </div>
+
+    <!-- Sección de días -->
+    <fieldset style="margin-top: 10px; margin-bottom: 10px">
+      <legend><b>Día y Horario</b></legend>
+      <div *ngFor="let dia of nuevaActividad.dias; let i = index">
+        <label>Fecha:</label>
+        <input type="date" [(ngModel)]="dia.fecha" [name]="'fecha_' + i" required />
+
+        <label>Hora Inicio:</label>
+        <input type="time" [(ngModel)]="dia.hora_inicio" [name]="'hora_inicio_' + i" required />
+
+        <label>Hora Final:</label>
+        <input type="time" [(ngModel)]="dia.hora_final" [name]="'hora_final_' + i" required />
+      </div>
+    </fieldset>
+
+    <button type="submit">Guardar Actividades</button>
+  </form>
+
+  <hr />
+
+  <h3>Lista de Actividades</h3>
+  <table border="1" cellpadding="8">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tipo</th>
+        <th>Estado</th>
+        <th>Notas</th>
+        <th>Días y Horarios</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let act of Actvidad">
+        <td>{{ act.id_actividades }}</td>
+        <td>{{ act.tipo }}</td>
+        <td>{{ act.estado }}</td>
+        <td>{{ act.notas }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let d of act.dias">
+              📅 {{ d.fecha }} (⏰ {{ d.hora_inicio }} - {{ d.hora_final }})
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
