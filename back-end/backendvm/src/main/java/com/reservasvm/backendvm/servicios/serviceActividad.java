@@ -29,6 +29,23 @@ public class serviceActividad {
     @Transactional 
     public actividades guardar(actividades actividad){
 
+        if(actividad.getTecnico() != null && actividad.getDias() != null){
+            Long idTecnico = actividad.getTecnico().getId_tecnicos();
+
+            for (dia d : actividad.getDias()) {
+                boolean tieneCruce = repositorio.existeCruceHorario
+                (idTecnico, 
+                d.getFecha(), 
+                d.getHora_inicio(), 
+                d.getHora_final()
+                );
+
+                if(tieneCruce){
+                    throw new RuntimeException("El tecnico ya tiene una actividad");
+                }   
+            }
+        }
+
         if(actividad.getDias() !=null){
             for(dia d: actividad.getDias()){
                 d.setActividad(actividad);
