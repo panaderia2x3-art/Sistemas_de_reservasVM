@@ -1,32 +1,12 @@
 <div style="padding: 20px">
-  <h2>Gestión de Clientes</h2>
-
-  <!-- Formulario simple para crear -->
-  <form (submit)="registrar(); $event.preventDefault()">
-    <div>
-      <label>Nombre:</label>
-      <input type="text" [(ngModel)]="nuevoCliente.nombre_cliente" name="nombre" required />
-    </div>
-    <div>
-      <label>Telefono:</label>
-      <input type="text" [(ngModel)]="nuevoCliente.telefono_cliente" name="telefono" required />
-    </div>
-    <div>
-      <label>Direccion:</label>
-      <input type="text" [(ngModel)]="nuevoCliente.direccion" name="direccion" required />
-    </div>
-    <div>
-      <label>Enlace mapa:</label>
-      <input type="text" [(ngModel)]="nuevoCliente.enlace_mapa" name="enlace" required />
-    </div>
-    <button type="submit">Guardar Cliente</button>
-  </form>
-
-  <hr />
-
-  <!-- Tabla de listado -->
-  <h3>Lista de Clientes</h3>
-  <table border="1" cellpadding="8">
+  <div class="titulo">
+    <h2>Gestión de Clientes</h2>
+  </div>  
+  <div class="caja">
+    <!-- Tabla de listado -->
+  <div class="caja-tabla">
+    <h3>Lista de Clientes</h3>
+  <table border="1" cellpadding="8" class="lista-cliente">
     <thead>
       <tr>
         <th>ID</th>
@@ -46,4 +26,33 @@
       </tr>
     </tbody>
   </table>
+  </div>
+  <hr />
+  <!-- Formulario simple para crear -->
+  <div class="caja-formulario">
+    <form (submit)="registrar(); $event.preventDefault()">
+    <div class="datos">
+      <label>Nombre:</label>
+      <input type="text" [(ngModel)]="nuevoCliente.nombre_cliente" name="nombre" required />
+    </div>
+    <div class="datos">
+      <label>Telefono:</label>
+      <input type="text" [(ngModel)]="nuevoCliente.telefono_cliente" name="telefono" required />
+    </div>
+    <div class="datos">
+      <label>Direccion:</label>
+      <input type="text" [(ngModel)]="nuevoCliente.direccion" name="direccion" required />
+    </div>
+    <div class="datos">
+      <label>Enlace mapa:</label>
+      <input type="text" [(ngModel)]="nuevoCliente.enlace_mapa" name="enlace" required />
+    </div>
+    <button type="submit">Guardar Cliente</button>
+  </form>
+  </div>
+
+  </div>
+    
+
+
 </div>
