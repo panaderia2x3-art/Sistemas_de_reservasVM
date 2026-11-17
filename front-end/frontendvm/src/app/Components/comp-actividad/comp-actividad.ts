@@ -61,4 +61,18 @@ export class CompActividad implements OnInit {
       },
     });
   }
+
+  arreglodia() {
+    this.nuevaActividad.dias.push({
+      fecha: '',
+      hora_inicio: '',
+      hora_final: '',
+    });
+  }
+
+  eliminarDia(index: number) {
+    if (this.nuevaActividad.dias.length > 1) {
+      this.nuevaActividad.dias.splice(index, 1);
+    }
+  }
 }

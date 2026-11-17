@@ -9,7 +9,7 @@ import java.time.LocalTime;
 
 public interface repoActividad extends JpaRepository<actividades, Long> {
 
-    @Query("SELECT COUNT(d) > 0 FROM actividades a JOIN a.dias d WHERE a.tecnico.id_tecnicos = :idTecnico AND d.fecha = :fecha AND (:horaInicio < d.horaFinal AND :horaFin > d.horaInicio)")
+    @Query("SELECT COUNT(d) > 0 FROM actividades a JOIN a.dias d WHERE a.tecnico.id_tecnicos = :idTecnico AND d.fecha = :fecha AND (:horaInicio < d.hora_final AND :horaFin > d.hora_inicio)")
     boolean existeCruceHorario(
         @Param("idTecnico") Long idTecnico,
         @Param("fecha") LocalDate fecha,
@@ -17,7 +17,7 @@ public interface repoActividad extends JpaRepository<actividades, Long> {
         @Param("horaFin") LocalTime horaFin
     );
 
-   @Query("SELECT COUNT(t) > 0 FROM tecnicos t WHERE t.id_tecnicos = :idTecnico AND t.activo = true")
+    @Query("SELECT COUNT(t) > 0 FROM tecnicos t WHERE t.id_tecnicos = :idTecnico AND t.activo = true")
     boolean tecnicoActivo(
         @Param("idTecnico") Long idTecnico
     );

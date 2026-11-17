@@ -46,9 +46,11 @@
     </div>
 
     <!-- Sección de días -->
-    <fieldset style="margin-top: 10px; margin-bottom: 10px">
+    <!-- Sección de días -->
+    <fieldset style="margin-top: 10px; margin-bottom: 10px" id="dias">
       <legend><b>Día y Horario</b></legend>
-      <div *ngFor="let dia of nuevaActividad.dias; let i = index">
+
+      <div *ngFor="let dia of nuevaActividad.dias; let i = index" style="margin-bottom: 8px">
         <label>Fecha:</label>
         <input type="date" [(ngModel)]="dia.fecha" [name]="'fecha_' + i" required />
 
@@ -57,7 +59,20 @@
 
         <label>Hora Final:</label>
         <input type="time" [(ngModel)]="dia.hora_final" [name]="'hora_final_' + i" required />
+
+        <!-- Botón opcional para eliminar la fila (solo si hay más de 1 día) -->
+        <button
+          type="button"
+          *ngIf="nuevaActividad.dias.length > 1"
+          (click)="eliminarDia(i)"
+          style="margin-left: 8px"
+        >
+          Eliminar
+        </button>
       </div>
+
+      <!-- IMPORTANTE: type="button" y (click) para que no envíe el formulario -->
+      <button type="button" style="margin-left: 20px" (click)="arreglodia()">+ Agregar día</button>
     </fieldset>
 
     <button type="submit">Guardar Actividades</button>
