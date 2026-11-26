@@ -37,7 +37,7 @@ public class serviceActividad {
 
             
 
-            if(repositorio.tecnicoActivo(idTecnico)){
+            if(repositorio.tecnicoActivo(idTecnico, true)){
                     for (dia d : actividad.getDias()) {
                         boolean tieneCruce = repositorio.existeCruceHorario
                             (idTecnico, 

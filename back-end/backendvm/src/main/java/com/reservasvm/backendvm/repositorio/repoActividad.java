@@ -17,8 +17,6 @@ public interface repoActividad extends JpaRepository<actividades, Long> {
         @Param("horaFin") LocalTime horaFin
     );
 
-    @Query("SELECT COUNT(t) > 0 FROM tecnicos t WHERE t.id_tecnicos = :idTecnico AND t.activo = true")
-    boolean tecnicoActivo(
-        @Param("idTecnico") Long idTecnico
-    );
+    @Query("SELECT COUNT(t) > 0 FROM tecnicos t WHERE t.id_tecnicos = :idTecnico AND t.activo = :activo")
+boolean tecnicoActivo(@Param("idTecnico") Long idTecnico, @Param("activo") Boolean activo);
 }

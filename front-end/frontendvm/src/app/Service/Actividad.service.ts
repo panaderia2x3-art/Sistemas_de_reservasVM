@@ -18,4 +18,12 @@ export class ActividadesServicio {
   guardar(Actividades: Actividad): Observable<Actividad> {
     return this.http.post<Actividad>(this.apiurl, Actividades);
   }
+
+  actualizar(Actividad: Actividad, id:number): Observable<Actividad>{
+    return this.http.put<Actividad>(`${this.apiurl}/${id}`,Actividad);
+  }
+
+  eliminar(id:number): Observable<void>{
+    return this.http.delete<void>(`${this.apiurl}/${id}`);
+  }
 }

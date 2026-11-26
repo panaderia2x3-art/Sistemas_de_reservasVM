@@ -62,6 +62,43 @@ export class CompActividad implements OnInit {
     });
   }
 
+  actualizarActividad() {
+    
+    const idActividad = this.nuevaActividad.id_actividades; 
+
+    if (idActividad) {
+      this.actividadService.actualizar(this.nuevaActividad, idActividad).subscribe({
+        next: (res) => {
+          console.log('Actualizado con éxito:', res);
+          this.cargarActividades(); // Recargas la lista
+        },
+        error: (err) => {
+          console.error('Error al actualizar:', err);
+        }
+      });
+    }
+  }
+
+  elimarActividades(){
+    const IDeliminar = this.nuevaActividad.id_actividades;
+
+    if(IDeliminar !== undefined && IDeliminar !== null){
+      this.actividadService.eliminar(IDeliminar).subscribe({
+        next:(dato) =>{
+          console.log("Eliminado con exito ", dato);
+          this.cargarActividades();
+        },
+        error:(err) =>{
+          console.error("No se pudo elimnar la actividad");
+        }
+      })
+    }else{
+      console.error("datos indefinido");
+    }
+
+    
+  }
+
   arreglodia() {
     this.nuevaActividad.dias.push({
       fecha: '',
